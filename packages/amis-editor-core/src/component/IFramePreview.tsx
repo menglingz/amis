@@ -236,6 +236,13 @@ function InnerComponent({
     }
   }, []);
 
+  const handeMouseOut = React.useCallback((e: MouseEvent) => {
+    if (editableRef.current) {
+      e.preventDefault();
+      e.stopPropagation();
+    }
+  }, []);
+
   // 禁用内部的提交事件
   const handleSubmit = React.useCallback((e: Event) => {
     e.preventDefault();
@@ -257,6 +264,7 @@ function InnerComponent({
     layer!.addEventListener('click', handleClick, true);
     layer!.addEventListener('dblclick', handleDBClick);
     layer!.addEventListener('mouseover', handeMouseOver);
+    layer!.addEventListener('mouseout', handeMouseOut);
     layer!.addEventListener('submit', handleSubmit);
 
     const unSensor = resizeSensor(doc!.body, () => {
@@ -270,6 +278,7 @@ function InnerComponent({
       layer!.removeEventListener('mousemove', handleMouseMove);
       layer!.removeEventListener('click', handleClick);
       layer!.removeEventListener('mouseover', handeMouseOver);
+      layer!.removeEventListener('mouseoout', handeMouseOut);
       layer!.removeEventListener('dblclick', handleDBClick);
       layer!.removeEventListener('submit', handleSubmit);
       store.setDoc(document);

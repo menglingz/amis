@@ -831,5 +831,10 @@ registerRenderer({
   getComponent: () => import('./renderers/Slider')
 });
 
+registerRenderer({
+  type: 'flip-container',
+  getComponent: () => import('./renderers/FlipContainer')
+});
+
 import './compat';
 import './schemaExtend';

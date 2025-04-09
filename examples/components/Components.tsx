@@ -34,6 +34,13 @@ export const components = [
         )
       },
       {
+        label: 'FlipContainer 悬停翻转容器',
+        path: '/zh-CN/components/flip-container',
+        component: React.lazy(() =>
+          import('../../docs/zh-CN/components/flip-container.md').then(wrapDoc)
+        )
+      },
+      {
         label: 'Collapse 折叠器',
         path: '/zh-CN/components/collapse',
         component: React.lazy(() =>

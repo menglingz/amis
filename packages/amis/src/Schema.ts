@@ -137,6 +137,7 @@ import {PasswordSchema} from './renderers/Password';
 import {WordsSchema} from './renderers/Words';
 import {RadioControlSchema} from './renderers/Form/Radio';
 import {SliderSchema} from './renderers/Slider';
+import {FlipContainerSchema} from './renderers/FlipContainer';
 
 // 每加个类型，这补充一下。
 export type SchemaType =
@@ -259,6 +260,7 @@ export type SchemaType =
   | 'input-signature'
   | 'input-verification-code'
   | 'shape'
+  | 'flip-container'
 
   // editor 系列
   | 'editor'
@@ -436,6 +438,7 @@ export type SchemaObject =
   | StepsSchema
   | PortletSchema
   | TimelineSchema
+  | FlipContainerSchema
 
   // 表单项
   | FormControlSchema

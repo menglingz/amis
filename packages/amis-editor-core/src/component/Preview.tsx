@@ -85,6 +85,7 @@ export default class Preview extends Component<PreviewProps> {
     currentDom.addEventListener('click', this.handleClick, true);
     currentDom.addEventListener('dblclick', this.handleDBClick, true);
     currentDom.addEventListener('mouseover', this.handeMouseOver);
+    currentDom.addEventListener('mouseout', this.handeMouseOut);
     currentDom.addEventListener('mousedown', this.handeMouseDown);
     currentDom.addEventListener('submit', this.handleSubmit);
     this.props.manager.on('after-update', this.handlePanelChange);
@@ -98,6 +99,7 @@ export default class Preview extends Component<PreviewProps> {
       currentDom.removeEventListener('click', this.handleClick, true);
       currentDom.removeEventListener('dblclick', this.handleDBClick, true);
       currentDom.removeEventListener('mouseover', this.handeMouseOver);
+      currentDom.removeEventListener('mouseout', this.handeMouseOut);
       currentDom.removeEventListener('mousedown', this.handeMouseDown);
       currentDom.removeEventListener('submit', this.handleSubmit);
       this.props.manager.off('after-update', this.handlePanelChange);
@@ -505,6 +507,14 @@ export default class Preview extends Component<PreviewProps> {
 
   @autobind
   handeMouseOver(e: MouseEvent) {
+    if (this.props.editable) {
+      e.preventDefault();
+      e.stopPropagation();
+    }
+  }
+
+  @autobind
+  handeMouseOut(e: MouseEvent) {
     if (this.props.editable) {
       e.preventDefault();
       e.stopPropagation();
